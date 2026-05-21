@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雅思口說必勝講義 | 過來人的私房秘笈</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FFFBF0; 
+            color: #4A4A4A;
+            line-height: 1.6;
+        }
+        .pdf-accent-red { color: #E26D5A; }
+        .pdf-bg-red { background-color: #E26D5A; }
+        .pdf-accent-yellow { background-color: #F4D03F; }
+        .pdf-bg-yellow-light { background-color: #FEF5D4; }
+        
+        /* 加入浮動與過渡動畫的互動卡片 */
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(226, 109, 90, 0.1), 0 2px 4px -1px rgba(226, 109, 90, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(226, 109, 90, 0.15), 0 4px 6px -2px rgba(226, 109, 90, 0.1);
+        }
+        
+        .highlight {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 60%, #F4D03F 60%);
+        }
+        .example-box {
+            border-left: 4px solid #E26D5A;
+            background-color: #FFF9F8;
+            transition: all 0.3s ease;
+        }
+        
+        /* 隱藏內容的動畫 */
+        .reveal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .reveal-content.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* 讓 AI 回應的 HTML 標籤有基本的樣式 (因為 Tailwind 會重置預設樣式) */
+        #ai-feedback h3 { font-size: 1.25rem; font-weight: 900; color: #E26D5A; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 2px solid #FEF5D4; padding-bottom: 0.25rem;}
+        #ai-feedback p { margin-bottom: 1rem; line-height: 1.6; }
+        #ai-feedback ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        #ai-feedback li { margin-bottom: 0.5rem; }
+        #ai-feedback strong { font-weight: 700; color: #4A4A4A; }
+    </style>
+</head>
+<body class="p-4 md:p-8 relative">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8 mt-6">
+
+            <span class="inline-block pdf-bg-red text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-4 shadow-sm">IELTS SPEAKING GUIDE - Practice with Study bar</span>
+            <h1 class="text-4xl md:text-5xl font-black mb-4 pdf-accent-red tracking-wide">雅思口說必勝秘笈 ✨</h1>
+            <p class="text-lg md:text-xl text-gray-600 font-medium">從結巴到自信開口，留學過來人的實戰精華與題庫破解</p>
+        </header>
+
+        <!-- 互動導覽列 (Table of Contents) -->
+        <nav class="bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-[#FEF5D4] mb-10 sticky top-4 z-50 transition-all">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 text-sm font-bold">
+                <a href="#rules" class="px-4 py-2 rounded-full text-gray-600 hover:bg-[#FEF5D4] hover:text-[#E26D5A] transition-colors">🎯 遊戲規則</a>
+                <a href="#part1" class="px-4 py-2 rounded-full text-gray-600 hover:bg-[#FEF5D4] hover:text-[#E26D5A] transition-colors">💬 Part 1 日常</a>
+                <a href="#part2" class="px-4 py-2 rounded-full text-gray-600 hover:bg-[#FEF5D4] hover:text-[#E26D5A] transition-colors">🎙️ Part 2 獨白</a>
+                <a href="#part3" class="px-4 py-2 rounded-full text-gray-600 hover:bg-[#FEF5D4] hover:text-[#E26D5A] transition-colors">🧠 Part 3 深度</a>
+                <a href="#survival" class="px-4 py-2 rounded-full text-gray-600 hover:bg-[#FEF5D4] hover:text-[#E26D5A] transition-colors">🆘 救場策略</a>
+                <a href="#vocab" class="px-4 py-2 rounded-full text-gray-600 hover:bg-[#FEF5D4] hover:text-[#E26D5A] transition-colors">📚 高分單字句型</a>
+                <a href="#ai-practice" class="px-4 py-2 rounded-full text-white bg-[#E26D5A] hover:bg-[#c95d4d] transition-colors shadow-sm">🤖 AI 實戰演練</a>
+            </div>
+        </nav>
+
+        <!-- Intro -->
+        <div class="card p-6 md:p-8 mb-10 border-t-4 border-[#E26D5A]">
+            <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="text-3xl mr-2 animate-bounce">👋</span> 給正在備考的你</h2>
+            <p class="leading-relaxed text-gray-700 text-lg">
+                哈囉！身為一個曾經在雅思考場上緊張到發抖，最後順利拿到理想分數出國的過來人，我想跟你說：<span class="highlight font-bold">雅思口說真的不是考你「講得多像母語人士」，而是考你「能不能有效、有自信地溝通」</span>。
+                這份講義是我濃縮了無數個準備熬夜的夜晚，整理出來的武功秘笈。放輕鬆，把考官當成你在國外剛認識的教授或朋友，我們開始吧！
+            </p>
+        </div>
+
+        <!-- Section 1: 遊戲規則 -->
+        <section id="rules" class="mb-12 scroll-mt-24">
+            <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">1</span> 
+                知己知彼：口說遊戲規則
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 border-b-4 border-transparent hover:border-[#F4D03F]">
+                    <h3 class="font-bold text-xl mb-3 border-b-2 border-[#FEF5D4] pb-2">⏱️ 考試流程 (11-14分鐘)</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="mr-2">🔹</span><div><span class="font-bold pdf-accent-red">Part 1 日常問答 (4-5分)：</span> 熱身題，像認識新朋友的閒聊。重點是自然流暢。</div></li>
+                        <li class="flex items-start"><span class="mr-2">🔹</span><div><span class="font-bold pdf-accent-red">Part 2 個人獨白 (3-4分)：</span> 拿題卡，準備1分鐘，連續講1-2分鐘。考驗敘事能力。</div></li>
+                        <li class="flex items-start"><span class="mr-2">🔹</span><div><span class="font-bold pdf-accent-red">Part 3 深度討論 (4-5分)：</span> 根據 Part 2 延伸的抽象社會議題。考驗邏輯與批判思考。</div></li>
+                    </ul>
+                </div>
+                <div class="card p-6 border-b-4 border-transparent hover:border-[#E26D5A]">
+                    <h3 class="font-bold text-xl mb-3 border-b-2 border-[#FEF5D4] pb-2">🎯 四大評分標準 (各佔25%)</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><span class="mr-2">💡</span><div><span class="font-bold">FC (流暢度與連貫性)：</span> 不卡頓，會使用連接詞 (Furthermore, Therefore)。</div></li>
+                        <li class="flex items-start"><span class="mr-2">💡</span><div><span class="font-bold">LR (詞彙多樣性)：</span> 不一直重複同個字，會用片語/慣用語 (idioms)。</div></li>
+                        <li class="flex items-start"><span class="mr-2">💡</span><div><span class="font-bold">GRA (文法準確性)：</span> 時態正確(過去的故事用過去式！)，會用複合句。</div></li>
+                        <li class="flex items-start"><span class="mr-2">💡</span><div><span class="font-bold">PR (發音)：</span> 不求腔調像外國人，但求<span class="highlight">語調有起伏、重音發對</span>。</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Part 1 -->
+        <section id="part1" class="mb-12 scroll-mt-24">
+            <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">2</span> 
+                Part 1：生活暖身題破解 & 實戰範例
+            </h2>
+            <div class="card p-6">
+                <p class="mb-4 text-gray-700"><strong>目標：</strong> 展現自然流暢。不要只回答 Yes/No，一定要用 <strong>「直接回答 + 2句話延伸 (原因/細節/例子)」</strong> 的公式。</p>
+                
+                <div class="space-y-6 mt-6">
+                    <!-- Example 1 (Interactive) -->
+                    <div class="example-box p-5 rounded-lg shadow-sm hover:shadow-md">
+                        <span class="inline-block bg-[#E26D5A] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-sm">情境一：Hometown (家鄉)</span>
+                        <p class="font-bold text-gray-800 text-lg mb-2">🗣️ Q: Has your hometown changed much in recent years?</p>
+                        <p class="text-gray-500 text-sm mb-4">❌ 弱回答: Yes, it has changed a lot. There are many new buildings. (太簡短)</p>
+                        
+                        <button onclick="toggleReveal('ans1')" class="bg-[#F4D03F] hover:bg-[#e3c137] text-gray-800 font-bold py-2 px-4 rounded-lg text-sm transition-colors flex items-center mb-2">
+                            <span>點擊看高分回答示範 👀</span>
+                        </button>
+                        
+                        <div id="ans1" class="reveal-content bg-white p-4 rounded border border-red-100 mt-2">
+                            <p class="text-gray-800">✅ <strong>高分回答:</strong> <span class="text-green-600 font-bold">Definitely!</span> Over the past decade, my hometown has undergone massive changes. <span class="text-blue-600 font-medium">(細節)</span> For instance, the local government has built a new subway system, <span class="text-blue-600 font-medium">(結果)</span> which makes commuting so much easier than before.</p>
+                            <p class="text-xs text-gray-500 mt-3 bg-gray-50 p-2 rounded">💡 點評：用 definitely 取代 yes，並給出了「地鐵」這個具體細節，時態也正確使用了現在完成式。</p>
+                        </div>
+                    </div>
+
+                    <!-- Example 2 (Interactive) -->
+                    <div class="example-box p-5 rounded-lg shadow-sm hover:shadow-md">
+                        <span class="inline-block bg-[#E26D5A] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 shadow-sm">情境二：Free Time (休閒時間)</span>
+                        <p class="font-bold text-gray-800 text-lg mb-2">🗣️ Q: What do you usually do on weekends?</p>
+                        
+                        <button onclick="toggleReveal('ans2')" class="bg-[#F4D03F] hover:bg-[#e3c137] text-gray-800 font-bold py-2 px-4 rounded-lg text-sm transition-colors flex items-center mb-2">
+                            <span>點擊看高分回答示範 👀</span>
+                        </button>
+                        
+                        <div id="ans2" class="reveal-content bg-white p-4 rounded border border-red-100 mt-2">
+                            <p class="text-gray-800">✅ <strong>高分回答:</strong> <span class="text-green-600 font-bold">Well, it really depends.</span> If I have a heavy workload, I might just stay home and catch up on some reading. <span class="text-blue-600 font-medium">(對比)</span> However, if the weather is nice and I'm free, I absolutely love going hiking with my friends to get away from the hustle and bustle of the city.</p>
+                            <p class="text-xs text-gray-500 mt-3 bg-gray-50 p-2 rounded">💡 點評：用語 "It really depends" 非常道地。使用 "catch up on" (補進度), "hustle and bustle" (喧囂) 等片語大加分！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Part 2 -->
+        <section id="part2" class="mb-12 scroll-mt-24">
+            <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">3</span> 
+                Part 2：魔王獨白題破解 & 實戰範例
+            </h2>
+            <div class="card p-6 border-l-4 border-[#F4D03F]">
+                <p class="mb-4 text-gray-700"><strong>目標：</strong> 故事完整、時態正確。善用黃金 1 分鐘準備時間，只寫關鍵字，使用 <strong>5W1H 架構</strong> 來豐富內容。</p>
+
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mt-4">
+                    <h4 class="font-bold mb-3 text-lg text-[#E26D5A]">📝 模擬考題 (Cue Card)</h4>
+                    <p class="font-medium text-gray-800 bg-white p-3 rounded shadow-sm">Describe a skill you learned that you think is very useful.<br>
+                    <span class="text-sm text-gray-500 block mt-2">- What the skill is<br>- When and how you learned it<br>- Who you learned it from<br>- And explain why you think it is useful</span></p>
+
+                    <div class="grid md:grid-cols-2 gap-4 mt-6">
+                        <div class="pdf-bg-yellow-light p-4 rounded shadow-sm hover:shadow-md transition-shadow">
+                            <h5 class="font-bold text-sm mb-2 text-gray-800">✍️ 過來人的 1 分鐘筆記 (切忌寫完整句子)</h5>
+                            <ul class="text-sm font-mono text-gray-700 space-y-1">
+                                <li class="bg-white/50 px-2 py-1 rounded">- What: Cooking (pasta, steak)</li>
+                                <li class="bg-white/50 px-2 py-1 rounded">- When: Last year, pandemic</li>
+                                <li class="bg-white/50 px-2 py-1 rounded">- How/Who: YouTube, trial & error</li>
+                                <li class="bg-white/50 px-2 py-1 rounded">- Why: Save $, healthier, stress-relief</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded border border-gray-200 text-sm shadow-sm hover:shadow-md transition-shadow">
+                            <h5 class="font-bold text-sm mb-2 text-gray-800">🎙️ 滿分作答示範 (節錄)</h5>
+                            <p class="text-gray-700">
+                                "<span class="font-bold text-green-600 bg-green-50 px-1 rounded">I'd like to talk about</span> cooking, which is undoubtedly one of the most practical skills I've ever acquired. 
+                                <br><br>
+                                <span class="font-bold text-blue-600 bg-blue-50 px-1 rounded">I actually picked up this skill</span> during the lock-down last year. Since all restaurants were closed, I had no choice but to learn it myself. <span class="font-bold text-blue-600 bg-blue-50 px-1 rounded">Instead of</span> taking a formal class, I basically learned everything from watching YouTube...
+                                <br><br>
+                                <span class="font-bold text-blue-600 bg-blue-50 px-1 rounded">The main reason why I find it so useful is that</span> it's not only incredibly cost-effective but also much healthier..."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Part 3 -->
+        <section id="part3" class="mb-12 scroll-mt-24">
+            <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">4</span> 
+                Part 3：抽象學術題破解 (OREO邏輯法)
+            </h2>
+            <div class="card p-6 border-l-4 border-gray-400">
+                <p class="mb-4 text-gray-700"><strong>目標：</strong> 展現邏輯與批判思考。考官問的不再是「你」，而是「社會現象」。請套用 <strong>OREO 法則</strong> 擴充答案：<span class="font-bold text-[#E26D5A]">Opinion (觀點) -> Reason (原因) -> Example (舉例) -> Outcome (結論)</span>。</p>
+                
+                <div class="example-box p-5 rounded-lg shadow-sm hover:shadow-md transition-all mt-4">
+                    <span class="inline-block bg-gray-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">情境：Technology & Society (科技與社會)</span>
+                    <p class="font-bold text-gray-800 text-lg mb-3">🗣️ Q: Do you think AI will eventually replace human teachers?</p>
+                    
+                    <div class="space-y-3 text-gray-700 bg-white p-4 rounded border border-gray-100 shadow-inner">
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 border-b border-gray-100 pb-2">
+                            <span class="bg-[#E26D5A] text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">O</span>
+                            <p><span class="font-bold text-gray-800">Opinion:</span> <span class="bg-yellow-100 px-1 rounded">To be honest, I don't entirely agree with that idea.</span> (老實說，我不完全同意。)</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 border-b border-gray-100 pb-2">
+                            <span class="bg-[#E26D5A] text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">R</span>
+                            <p><span class="font-bold text-gray-800">Reason:</span> <span class="bg-yellow-100 px-1 rounded">This is mainly because</span> education is also about emotional connection, which AI lacks. (因為教育包含情感連結)</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center gap-2 border-b border-gray-100 pb-2">
+                            <span class="bg-[#E26D5A] text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">E</span>
+                            <p><span class="font-bold text-gray-800">Example:</span> <span class="bg-yellow-100 px-1 rounded">For instance,</span> when a student is discouraged, a human teacher can offer empathy, whereas a machine only analyzes data.</p>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-center gap-2">
+                            <span class="bg-[#E26D5A] text-white font-bold w-8 h-8 rounded-full flex items-center justify-center shrink-0">O</span>
+                            <p><span class="font-bold text-gray-800">Outcome:</span> <span class="bg-yellow-100 px-1 rounded">Therefore,</span> AI will be an assistant, but never replace the human touch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: 救場策略 -->
+        <section id="survival" class="mb-12 scroll-mt-24">
+            <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">5</span> 
+                考場求生：遇到困難怎麼辦？
+            </h2>
+            <div class="grid md:grid-cols-3 gap-4 text-center">
+                <div class="card p-5 group cursor-pointer">
+                    <div class="text-4xl mb-3 transform group-hover:scale-125 transition-transform duration-300">🤔</div>
+                    <h4 class="font-bold mb-2 text-lg text-gray-800 group-hover:text-[#E26D5A] transition-colors">沒聽懂題目</h4>
+                    <p class="text-sm text-gray-600 mb-4">有禮貌地請考官重複或解釋是<span class="text-red-500 font-bold">完全不扣分</span>的！</p>
+                    <code class="text-sm bg-gray-100 px-3 py-2 rounded text-[#E26D5A] font-bold block text-left shadow-inner">"Sorry, could you rephrase the question, please?"</code>
+                </div>
+                <div class="card p-5 group cursor-pointer">
+                    <div class="text-4xl mb-3 transform group-hover:scale-125 transition-transform duration-300">⏳</div>
+                    <h4 class="font-bold mb-2 text-lg text-gray-800 group-hover:text-[#E26D5A] transition-colors">需要時間思考</h4>
+                    <p class="text-sm text-gray-600 mb-4">絕對不要發出漫長的 "Ummm"，用自然的句子把思考時間合理化。</p>
+                    <code class="text-sm bg-gray-100 px-3 py-2 rounded text-[#E26D5A] font-bold block text-left shadow-inner">"That's a really tricky question. Let me think..."</code>
+                </div>
+                <div class="card p-5 group cursor-pointer">
+                    <div class="text-4xl mb-3 transform group-hover:scale-125 transition-transform duration-300">🙊</div>
+                    <h4 class="font-bold mb-2 text-lg text-gray-800 group-hover:text-[#E26D5A] transition-colors">講錯文法</h4>
+                    <p class="text-sm text-gray-600 mb-4">不要驚慌道歉，自然地自我糾正反而有助於分數。</p>
+                    <code class="text-sm bg-gray-100 px-3 py-2 rounded text-[#E26D5A] font-bold block text-left shadow-inner">"He go... I mean, he went to the store."</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: 句型與單字 -->
+        <div id="vocab" class="grid md:grid-cols-2 gap-8 mb-12 scroll-mt-24">
+            <!-- 常用句型 -->
+            <section>
+                <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                    <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">6</span> 
+                    萬用高分句型模組
+                </h2>
+                <div class="card p-6 h-full">
+                    <ul class="space-y-4">
+                        <li class="border-b border-gray-100 pb-3 hover:bg-gray-50 p-2 rounded transition-colors">
+                            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">表達強烈觀點 (取代 I think)</span>
+                            <span class="font-bold text-gray-800 block">💡 Personally, I strongly believe that...</span>
+                            <span class="font-bold text-gray-800 block">💡 As far as I'm concerned,...</span>
+                        </li>
+                        <li class="border-b border-gray-100 pb-3 hover:bg-gray-50 p-2 rounded transition-colors">
+                            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">對比兩面看法 (Part 3必備)</span>
+                            <span class="font-bold text-gray-800 block">💡 On the one hand... On the other hand...</span>
+                            <span class="font-bold text-gray-800 block">💡 While some people argue that... I tend to think...</span>
+                        </li>
+                        <li class="border-b border-gray-100 pb-3 hover:bg-gray-50 p-2 rounded transition-colors">
+                            <span class="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">補充說明 (取代 And)</span>
+                            <span class="font-bold text-gray-800 block">💡 On top of that,...</span>
+                            <span class="font-bold text-gray-800 block">💡 What's more,... / Additionally,...</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 實用單字升級 (Flashcard Style Hover) -->
+            <section>
+                <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                    <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">7</span> 
+                    單字大升級 (互動字卡)
+                </h2>
+                <div class="card p-6 h-full bg-[#FFF9F8]">
+                    <p class="text-sm text-gray-600 mb-4">💡 <span class="font-bold text-[#E26D5A]">滑鼠移過去 / 點擊</span> 看看怎麼替換成高級單字：</p>
+                    
+                    <div class="space-y-3">
+                        <div class="group relative bg-white border border-red-100 p-3 rounded-lg text-center cursor-pointer overflow-hidden shadow-sm">
+                            <div class="font-bold text-gray-400 line-through group-hover:opacity-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center">very good</div>
+                            <div class="font-black text-[#E26D5A] opacity-0 group-hover:opacity-100 transition-opacity duration-300">phenomenal / marvelous ✨</div>
+                        </div>
+                        <div class="group relative bg-white border border-red-100 p-3 rounded-lg text-center cursor-pointer overflow-hidden shadow-sm">
+                            <div class="font-bold text-gray-400 line-through group-hover:opacity-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center">very bad</div>
+                            <div class="font-black text-[#E26D5A] opacity-0 group-hover:opacity-100 transition-opacity duration-300">detrimental / awful 🚫</div>
+                        </div>
+                        <div class="group relative bg-white border border-red-100 p-3 rounded-lg text-center cursor-pointer overflow-hidden shadow-sm">
+                            <div class="font-bold text-gray-400 line-through group-hover:opacity-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center">many / a lot of</div>
+                            <div class="font-black text-[#E26D5A] opacity-0 group-hover:opacity-100 transition-opacity duration-300">a multitude of / a vast array of 📚</div>
+                        </div>
+                        <div class="group relative bg-white border border-red-100 p-3 rounded-lg text-center cursor-pointer overflow-hidden shadow-sm">
+                            <div class="font-bold text-gray-400 line-through group-hover:opacity-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center">important</div>
+                            <div class="font-black text-[#E26D5A] opacity-0 group-hover:opacity-100 transition-opacity duration-300">crucial / vital / indispensable 🔑</div>
+                        </div>
+                        <div class="group relative bg-white border border-red-100 p-3 rounded-lg text-center cursor-pointer overflow-hidden shadow-sm">
+                            <div class="font-bold text-gray-400 line-through group-hover:opacity-0 transition-opacity duration-300 absolute inset-0 flex items-center justify-center">I like...</div>
+                            <div class="font-black text-[#E26D5A] opacity-0 group-hover:opacity-100 transition-opacity duration-300">I'm passionate about... ❤️</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Section 8: AI 實戰演練 -->
+        <section id="ai-practice" class="mb-12 scroll-mt-24">
+            <h2 class="text-2xl font-black mb-6 pdf-accent-red flex items-center">
+                <span class="pdf-accent-yellow text-[#4A4A4A] w-8 h-8 rounded-full flex items-center justify-center mr-3 text-lg">8</span> 
+                🤖 AI 考官實戰演練 (支援語音輸入)
+            </h2>
+            <div class="card p-6 border-t-4 border-[#F4D03F] relative overflow-hidden">
+                <p class="text-gray-700 mb-6">不敢跟真人練？沒關係，讓嚴格又溫柔的 AI 考官來幫你！你可以選擇題型、使用<span class="font-bold text-[#E26D5A]">語音輸入 (請允許麥克風權限)</span> 或手動打字作答，送出後 AI 會立刻為你評分並給出高分示範。</p>
+                
+                <!-- 選擇題型區 -->
+                <div class="bg-[#FFF9F8] p-5 rounded-lg border border-red-100 mb-6">
+                    <h3 class="font-bold text-gray-800 mb-3">步驟一：選擇你想練習的題型</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ielts-part" value="Part 1 (日常問答)" class="hidden peer" checked>
+                            <div class="px-4 py-2 rounded-full border-2 border-gray-200 text-gray-600 peer-checked:border-[#E26D5A] peer-checked:bg-[#E26D5A] peer-checked:text-white transition-all font-bold text-sm">Part 1 基礎日常題</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ielts-part" value="Part 2 (兩分鐘個人獨白)" class="hidden peer">
+                            <div class="px-4 py-2 rounded-full border-2 border-gray-200 text-gray-600 peer-checked:border-[#E26D5A] peer-checked:bg-[#E26D5A] peer-checked:text-white transition-all font-bold text-sm">Part 2 魔王獨白題</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="ielts-part" value="Part 3 (深度學術討論)" class="hidden peer">
+                            <div class="px-4 py-2 rounded-full border-2 border-gray-200 text-gray-600 peer-checked:border-[#E26D5A] peer-checked:bg-[#E26D5A] peer-checked:text-white transition-all font-bold text-sm">Part 3 深度討論題</div>
+                        </label>
+                    </div>
+                    <button id="generate-q-btn" onclick="generateQuestion()" class="mt-4 w-full md:w-auto bg-[#F4D03F] hover:bg-[#e3c137] text-gray-800 font-bold py-2 px-6 rounded-lg transition-colors shadow-sm">
+                        🎲 點我讓考官出題
+                    </button>
+                </div>
+
+                <!-- 考題顯示與作答區 -->
+                <div id="ai-qa-area" class="hidden">
+                    <div class="mb-6">
+                        <h3 class="font-bold text-[#E26D5A] mb-2 border-b-2 border-red-100 pb-1 flex items-center gap-2"><span class="text-xl">📝</span> 你的專屬考題</h3>
+                        <div id="ai-question" class="text-gray-800 font-medium bg-gray-50 p-5 rounded-lg border border-gray-200 text-lg shadow-inner">
+                            <!-- 題目載入處 -->
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-2 gap-2">
+                            <h3 class="font-bold text-[#556B2F] flex items-center gap-2"><span class="text-xl">🎙️</span> 步驟二：請作答 (英文)</h3>
+                            <button id="mic-btn" onclick="toggleRecording()" class="flex items-center justify-center gap-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full text-sm transition-all shadow-sm border border-gray-300">
+                                🎤 開始語音輸入
+                            </button>
+                        </div>
+                        <textarea id="ai-answer" rows="6" class="w-full p-4 rounded-lg border-2 border-gray-200 focus:border-[#E26D5A] focus:ring-0 transition-colors outline-none text-gray-700 resize-none shadow-inner" placeholder="點擊上方麥克風開始說話，或者直接在這裡打字輸入你的英文回答..."></textarea>
+                    </div>
+
+                    <button id="submit-ans-btn" onclick="submitAnswer()" class="w-full bg-[#E26D5A] hover:bg-[#c95d4d] text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-md text-lg flex items-center justify-center gap-2">
+                        <span>🚀 送出給 AI 評分</span>
+                    </button>
+                </div>
+
+                <!-- 評分結果區 -->
+                <div id="ai-result-area" class="hidden mt-8 pt-8 border-t-2 border-dashed border-gray-200">
+                    <h3 class="text-2xl font-black text-center text-gray-800 mb-6 tracking-wide">📊 AI 考官評分報告</h3>
+                    <div id="ai-feedback" class="text-gray-700 p-6 md:p-8 rounded-xl bg-[#FEF5D4]/40 border border-[#F4D03F]/50 shadow-inner">
+                        <!-- 結果載入處 -->
+                    </div>
+                </div>
+                
+                <!-- Loading 遮罩 -->
+                <div id="ai-loading" class="hidden absolute inset-0 bg-white/90 backdrop-blur-sm z-10 flex-col items-center justify-center rounded-xl">
+                    <div class="animate-spin rounded-full h-14 w-14 border-4 border-gray-200 border-t-[#E26D5A] mb-4"></div>
+                    <p id="loading-text" class="text-gray-800 font-bold text-lg animate-pulse">AI 考官正在思考中...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 mb-8">
+            <div class="inline-block pdf-bg-yellow-light px-8 py-5 rounded-2xl border-2 border-[#F4D03F] border-dashed hover:scale-105 transition-transform duration-300 cursor-default shadow-md">
+                <p class="font-bold text-xl text-gray-800 mb-3 flex items-center justify-center gap-2"><span class="animate-pulse">💪</span> 最後的小叮嚀</p>
+                <p class="text-gray-700 leading-relaxed">
+                    考前一天請睡飽，考試當天深呼吸、面帶微笑。<br>
+                    把它當成是一場 <span class="font-bold text-[#E26D5A] border-b-2 border-[#E26D5A]">"Conversation" (對話)</span> 而不是 <span class="font-bold text-[#E26D5A]">"Test" (測驗)</span>。<br>
+                    大方展現你想溝通的熱情，考官一定感受得到！祝你早日跟雅思分手，飛往夢想學校！✈️🎓
+                </p>
+            </div>
+            
+            <div class="mt-10 flex flex-col items-center justify-center">
+                <p class="text-sm text-gray-400">Created by Study bar for future international students. Study hard, play harder!</p>
+            </div>
+        </footer>
+
+        <!-- 返回頂部按鈕 -->
+        <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-[#E26D5A] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-[#c95d4d] hover:-translate-y-1 transition-all opacity-0 translate-y-10 z-50">
+            ↑
+        </button>
+
+    </div>
+
+    <!-- 互動腳本 -->
+    <script>
+        // 點擊展開解答功能
+        function toggleReveal(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('open');
+            
+            // 找到點擊的按鈕並更換文字
+            const btn = element.previousElementSibling;
+            if(element.classList.contains('open')) {
+                btn.innerHTML = '<span>收起解答 ⬆️</span>';
+                btn.classList.replace('bg-[#F4D03F]', 'bg-gray-200');
+            } else {
+                btn.innerHTML = '<span>點擊看高分回答示範 👀</span>';
+                btn.classList.replace('bg-gray-200', 'bg-[#F4D03F]');
+            }
+        }
+
+        // 滾動時顯示/隱藏「返回頂部」按鈕
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btn.classList.remove('opacity-0', 'translate-y-10');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-10');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+
+        // ==========================================
+        // AI 互動與語音辨識邏輯
+        // ==========================================
+        const apiKey = ""; // 執行環境會自動注入
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        let currentGeneratedQuestion = "";
+
+        // API 呼叫 (帶有指數退避重試機制)
+        async function fetchGeminiWithRetry(prompt, retries = 5) {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            let attempt = 0;
+
+            while (attempt < retries) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }]
+                        })
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "AI 無法生成內容，請稍後再試。";
+                } catch (error) {
+                    attempt++;
+                    if (attempt >= retries) return "抱歉，連線發生錯誤，請確認網路狀態或稍後重試。";
+                    await new Promise(res => setTimeout(res, delays[attempt - 1]));
+                }
+            }
+        }
+
+        // 顯示/隱藏 載入遮罩
+        function toggleLoading(show, text = 'AI 處理中...') {
+            const loading = document.getElementById('ai-loading');
+            const loadingText = document.getElementById('loading-text');
+            loadingText.innerText = text;
+            if (show) {
+                loading.classList.remove('hidden');
+                loading.classList.add('flex');
+            } else {
+                loading.classList.add('hidden');
+                loading.classList.remove('flex');
+            }
+        }
+
+        // 步驟一：讓 AI 產生雅思題目
+        async function generateQuestion() {
+            const selectedPart = document.querySelector('input[name="ielts-part"]:checked').value;
+            const prompt = `請隨機給我一個雅思口說 ${selectedPart} 的模擬考題。只需提供題目內容(英文)，不要有任何中文解釋、開場白或其他多餘對話。如果是 Part 2，請列出描述重點(bullet points)，並使用簡單的 HTML 標籤(例如 <p> 和 <ul> <li>) 來進行排版。`;
+            
+            toggleLoading(true, '考官正在為您出題...');
+            document.getElementById('ai-qa-area').classList.add('hidden');
+            document.getElementById('ai-result-area').classList.add('hidden');
+            document.getElementById('ai-answer').value = ''; // 換題時清空上次作答
+            
+            const questionHtml = await fetchGeminiWithRetry(prompt);
+            
+            document.getElementById('ai-question').innerHTML = questionHtml;
+            currentGeneratedQuestion = questionHtml;
+            
+            toggleLoading(false);
+            document.getElementById('ai-qa-area').classList.remove('hidden');
+            document.getElementById('ai-qa-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // 步驟二：送出作答給 AI 評分
+        async function submitAnswer() {
+            const userAnswer = document.getElementById('ai-answer').value.trim();
+            if (!userAnswer) return alert('請先輸入或語音錄製您的英文回答！');
+
+            const prompt = `你現在是一位嚴格但具備建設性的雅思口說考官。
+這是我抽到的雅思口說考題：
+${currentGeneratedQuestion}
+
+這是我的英文回答：
+${userAnswer}
+
+請給我一份詳細的評分報告，必須包含以下結構：
+1. 預估分數 (0.0 - 9.0)
+2. 表現亮點 (流暢度、單字、文法等方面)
+3. 具體改善建議 (糾正錯誤或提供更好的表達方式)
+4. 高分示範 (Band 8.0+ 的範例回答)
+
+請全部使用 HTML 標籤排版 (例如 <h3>, <p>, <ul>, <li>, <strong> 等) 來回覆，讓我能直接顯示在網頁上。絕對不要使用 Markdown 語法 (如 **)。除了評分報告外，不要輸出任何其他無關的對話。請用繁體中文回覆點評，高分示範保留英文。`;
+
+            toggleLoading(true, '考官正在仔細聆聽並評分中...');
+            document.getElementById('ai-result-area').classList.add('hidden');
+
+            const feedbackHtml = await fetchGeminiWithRetry(prompt);
+            
+            document.getElementById('ai-feedback').innerHTML = feedbackHtml;
+            
+            toggleLoading(false);
+            document.getElementById('ai-result-area').classList.remove('hidden');
+            document.getElementById('ai-result-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // ==========================================
+        // 語音辨識邏輯 (Web Speech API)
+        // ==========================================
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition;
+        let isRecording = false;
+
+        if (SpeechRecognition) {
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US'; // 雅思作答限英文
+
+            recognition.onstart = function() {
+                isRecording = true;
+                const micBtn = document.getElementById('mic-btn');
+                micBtn.classList.add('animate-pulse', 'bg-red-500', 'text-white', 'border-red-500');
+                micBtn.classList.remove('bg-gray-100', 'text-gray-700', 'border-gray-300');
+                micBtn.innerHTML = '🛑 點擊停止錄音';
+            };
+
+            recognition.onresult = function(event) {
+                let finalTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript;
+                    }
+                }
+                if (finalTranscript) {
+                    const answerInput = document.getElementById('ai-answer');
+                    // 自動加上空白分隔
+                    answerInput.value = answerInput.value + (answerInput.value.endsWith(' ') || answerInput.value === '' ? '' : ' ') + finalTranscript;
+                }
+            };
+
+            recognition.onerror = function(event) {
+                console.error('語音辨識錯誤', event.error);
+                stopRecording();
+            };
+
+            recognition.onend = function() {
+                stopRecording();
+            };
+        }
+
+        function toggleRecording() {
+            if (!recognition) return alert('您的瀏覽器不支援語音輸入功能，請手動輸入作答 (建議使用最新版 Chrome 或 Safari 瀏覽器)。');
+            
+            if (isRecording) {
+                recognition.stop();
+            } else {
+                recognition.start();
+            }
+        }
+
+        function stopRecording() {
+            if (!isRecording) return;
+            isRecording = false;
+            const micBtn = document.getElementById('mic-btn');
+            if(micBtn) {
+                micBtn.classList.remove('animate-pulse', 'bg-red-500', 'text-white', 'border-red-500');
+                micBtn.classList.add('bg-gray-100', 'text-gray-700', 'border-gray-300');
+                micBtn.innerHTML = '🎤 開始語音輸入';
+            }
+        }
+    </script>
+</body>
+</html>
