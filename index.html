@@ -504,8 +504,10 @@
         // ==========================================
         // AI 互動與語音辨識邏輯
         // ==========================================
-        const apiKey = "AIzaSyA_2c1z3lyfR5wsnuI0KTARyHYW92sstnY"; // 執行環境會自動注入
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+        // 請務必把下面引號裡的內容，換成你最新申請的那把金鑰！
+        const apiKey = "請在這裡貼上你的金鑰"; 
+        
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
         
         let currentGeneratedQuestion = "";
 
@@ -539,6 +541,8 @@
         function toggleLoading(show, text = 'AI 處理中...') {
             const loading = document.getElementById('ai-loading');
             const loadingText = document.getElementById('loading-text');
+            if (!loading || !loadingText) return; // 避免找不到元素報錯
+            
             loadingText.innerText = text;
             if (show) {
                 loading.classList.remove('hidden');
@@ -551,27 +555,43 @@
 
         // 步驟一：讓 AI 產生雅思題目
         async function generateQuestion() {
-            const selectedPart = document.querySelector('input[name="ielts-part"]:checked').value;
+            const selectedPartElement = document.querySelector('input[name="ielts-part"]:checked');
+            if(!selectedPartElement) {
+                alert("請先選擇題型！");
+                return;
+            }
+            const selectedPart = selectedPartElement.value;
             const prompt = `請隨機給我一個雅思口說 ${selectedPart} 的模擬考題。只需提供題目內容(英文)，不要有任何中文解釋、開場白或其他多餘對話。如果是 Part 2，請列出描述重點(bullet points)，並使用簡單的 HTML 標籤(例如 <p> 和 <ul> <li>) 來進行排版。`;
             
             toggleLoading(true, '考官正在為您出題...');
-            document.getElementById('ai-qa-area').classList.add('hidden');
-            document.getElementById('ai-result-area').classList.add('hidden');
-            document.getElementById('ai-answer').value = ''; // 換題時清空上次作答
+            
+            const qaArea = document.getElementById('ai-qa-area');
+            const resultArea = document.getElementById('ai-result-area');
+            const answerInput = document.getElementById('ai-answer');
+            const questionDisplay = document.getElementById('ai-question');
+            
+            if(qaArea) qaArea.classList.add('hidden');
+            if(resultArea) resultArea.classList.add('hidden');
+            if(answerInput) answerInput.value = ''; // 換題時清空上次作答
             
             const questionHtml = await fetchGeminiWithRetry(prompt);
             
-            document.getElementById('ai-question').innerHTML = questionHtml;
+            if(questionDisplay) questionDisplay.innerHTML = questionHtml;
             currentGeneratedQuestion = questionHtml;
             
             toggleLoading(false);
-            document.getElementById('ai-qa-area').classList.remove('hidden');
-            document.getElementById('ai-qa-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if(qaArea) {
+                qaArea.classList.remove('hidden');
+                qaArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         // 步驟二：送出作答給 AI 評分
         async function submitAnswer() {
-            const userAnswer = document.getElementById('ai-answer').value.trim();
+            const answerInput = document.getElementById('ai-answer');
+            if(!answerInput) return;
+            
+            const userAnswer = answerInput.value.trim();
             if (!userAnswer) return alert('請先輸入或語音錄製您的英文回答！');
 
             const prompt = `你現在是一位嚴格但具備建設性的雅思口說考官。
@@ -590,15 +610,20 @@ ${userAnswer}
 請全部使用 HTML 標籤排版 (例如 <h3>, <p>, <ul>, <li>, <strong> 等) 來回覆，讓我能直接顯示在網頁上。絕對不要使用 Markdown 語法 (如 **)。除了評分報告外，不要輸出任何其他無關的對話。請用繁體中文回覆點評，高分示範保留英文。`;
 
             toggleLoading(true, '考官正在仔細聆聽並評分中...');
-            document.getElementById('ai-result-area').classList.add('hidden');
+            const resultArea = document.getElementById('ai-result-area');
+            const feedbackDisplay = document.getElementById('ai-feedback');
+            
+            if(resultArea) resultArea.classList.add('hidden');
 
             const feedbackHtml = await fetchGeminiWithRetry(prompt);
             
-            document.getElementById('ai-feedback').innerHTML = feedbackHtml;
+            if(feedbackDisplay) feedbackDisplay.innerHTML = feedbackHtml;
             
             toggleLoading(false);
-            document.getElementById('ai-result-area').classList.remove('hidden');
-            document.getElementById('ai-result-area').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if(resultArea) {
+                resultArea.classList.remove('hidden');
+                resultArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
 
         // ==========================================
@@ -617,9 +642,11 @@ ${userAnswer}
             recognition.onstart = function() {
                 isRecording = true;
                 const micBtn = document.getElementById('mic-btn');
-                micBtn.classList.add('animate-pulse', 'bg-red-500', 'text-white', 'border-red-500');
-                micBtn.classList.remove('bg-gray-100', 'text-gray-700', 'border-gray-300');
-                micBtn.innerHTML = '點擊停止錄音';
+                if(micBtn){
+                    micBtn.classList.add('animate-pulse', 'bg-red-500', 'text-white', 'border-red-500');
+                    micBtn.classList.remove('bg-gray-100', 'text-gray-700', 'border-gray-300');
+                    micBtn.innerHTML = '點擊停止錄音';
+                }
             };
 
             recognition.onresult = function(event) {
@@ -631,8 +658,9 @@ ${userAnswer}
                 }
                 if (finalTranscript) {
                     const answerInput = document.getElementById('ai-answer');
-                    // 自動加上空白分隔
-                    answerInput.value = answerInput.value + (answerInput.value.endsWith(' ') || answerInput.value === '' ? '' : ' ') + finalTranscript;
+                    if(answerInput) {
+                        answerInput.value = answerInput.value + (answerInput.value.endsWith(' ') || answerInput.value === '' ? '' : ' ') + finalTranscript;
+                    }
                 }
             };
 
